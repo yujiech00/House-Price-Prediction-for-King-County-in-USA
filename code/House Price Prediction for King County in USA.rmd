@@ -25,10 +25,10 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r Data Import}
 
-kv_house_data = read.csv("/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/data/kc_house_data.csv")
+kv_house_data = read.csv("/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/data/kc_house_data.csv")
 names(kv_house_data)
 
-zipcode_region = read.csv("/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/data/Zipcode.csv", header=T)
+zipcode_region = read.csv("/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/data/Zipcode.csv", header=T)
 
 ```
 
@@ -192,7 +192,7 @@ grid.arrange(grobs=boxplot_list, ncol=4)
 
 # Save boxplots generated
 g <- arrangeGrob(grobs=boxplot_list, ncol=4)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/boxplot_list.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/boxplot_list.png", g)
 
 # Draw side-by-side boxplots for categorical variables
 sidebyside_boxplot_list = list()
@@ -213,13 +213,13 @@ grid.arrange(grobs=sidebyside_boxplot_list[c(7, 8, 9)], nrow=2, ncol=2)
 
 # Save side-by-side boxplots generated
 g <- arrangeGrob(grobs=sidebyside_boxplot_list[c(1, 2, 3)], nrow=2, ncol=2)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/sidebyside_boxplot_list_part1.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/sidebyside_boxplot_list_part1.png", g)
 
 g <- arrangeGrob(grobs=sidebyside_boxplot_list[c(4, 5, 6)], nrow=2, ncol=2)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/sidebyside_boxplot_list_part2.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/sidebyside_boxplot_list_part2.png", g)
 
 g <- arrangeGrob(grobs=sidebyside_boxplot_list[c(7, 8, 9)], nrow=2, ncol=2)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/sidebyside_boxplot_list_part3.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/sidebyside_boxplot_list_part3.png", g)
 
 # Draw side-by-side boxplots for bedrooms and floors
 # The number of bedrooms and floors might affect the house price or unitPrice a lot, so we draw side-by-side 
@@ -235,7 +235,7 @@ grid.arrange(grobs=sidebyside_boxplot_list_extra, ncol=2)
 
 # Save the two extra side-by-side boxplots generated
 g <- arrangeGrob(grobs=sidebyside_boxplot_list_extra, ncol=2)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/sidebyside_boxplot_list_extra.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/sidebyside_boxplot_list_extra.png", g)
 
 # We temporarily converted bedrooms and floors into factors/categorical variables in order to draw side-by-side boxplots for them. Now we convert them back to be numerical variables for further model fitting.
 kv_house_data_family$bedrooms = as.numeric(kv_house_data_family$bedrooms)
@@ -254,7 +254,7 @@ g <- ggplot(mean_price_over_month, aes(x=month, y=mean_price)) +
         scale_x_continuous(breaks=seq(1,12,1)) +
         ggtitle("price trend over months")
 print(g)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/price _trend_over_months.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/price _trend_over_months.png", g)
 
 # Draw histograms for numerical variables
 par(mfrow=c(3,3))
@@ -271,9 +271,9 @@ grid.arrange(grobs=histogram_list[(round(n_of_histograms/2)+1):n_of_histograms],
 
 # Save the histograms generated
 g <- arrangeGrob(grobs=histogram_list[1: round(n_of_histograms/2)], ncol=3)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/histogram_list_part1.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/histogram_list_part1.png", g)
 g <- arrangeGrob(grobs=histogram_list[(round(n_of_histograms/2)+1):n_of_histograms], ncol=3)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/histogram_list_part2.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/histogram_list_part2.png", g)
 
 # Generate spearman correlation matrix
 # We only focus on numeric variables => Exception: We ignore column diff_yr_renovated_and_year which contains many NAs
@@ -290,7 +290,7 @@ ggcorrplot(cor(x=kv_house_data_family[, temp], y=NULL, method="spearman"), hc.or
    colors = c("#6D9EC1", "white", "#E46726")) + ggplot2::theme(axis.text.x=element_text(angle = -90, hjust = 0))
 
 # Save the spearman correlation matrix plot generated
-ggsave("/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/spearman_correlation_matrix_plot.png")
+ggsave("/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/spearman_correlation_matrix_plot.png")
 
 ```
 
@@ -306,12 +306,12 @@ num_regions
 # Draw and save the boxplot of price by region
 g <- ggplot(kv_house_data_family, aes(x=region, y=price,fill=region)) + geom_boxplot(alpha=0.3) + theme(legend.position="none", axis.text.x=element_text(angle = -90, hjust = 0))
 print(g)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/boxplot_of_price_by_region.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/boxplot_of_price_by_region.png", g)
 
 # Draw and save the boxplot of unitPrice by region
 g <- ggplot(kv_house_data_family, aes(x=region, y=unitPrice,fill=region)) + geom_boxplot(alpha=0.3) + theme(legend.position="none", axis.text.x=element_text(angle = -90, hjust = 0))
 print(g)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/boxplot_of_unitPrice_by_region.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/boxplot_of_unitPrice_by_region.png", g)
 
 # Draw and save the histogram of unitPrice by region
 g <- ggplot(kv_house_data_family, aes(x = unitPrice, fill = region)) + 
@@ -320,7 +320,7 @@ g <- ggplot(kv_house_data_family, aes(x = unitPrice, fill = region)) +
   ggtitle("Histogram of Unit Price by Region") +
   theme_bw()
 print(g)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/histogram_of_unitPrice_by_region.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/histogram_of_unitPrice_by_region.png", g)
 
 # Draw and save the bar chart of the count of houses by region
 g <- ggplot(kv_house_data_family, aes(x = region, fill = region)) + 
@@ -330,7 +330,7 @@ g <- ggplot(kv_house_data_family, aes(x = region, fill = region)) +
   theme_bw() +
   theme(axis.text.x=element_text(angle = -90, hjust = 0))
 print(g)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/barchart_of_count_of_houses_by_region.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/barchart_of_count_of_houses_by_region.png", g)
 
 ```
 
@@ -362,7 +362,7 @@ g <- ggcorrplot(cor(x=kv_house_data_family_filtered[, temp2], y=NULL, method="sp
    colors = c("#6D9EC1", "white", "#E46726"),
    lab = TRUE)
 print(g)
-ggsave(file="/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/plots/spearman_matrix_plot_for_filtered_dataset.png", g)
+ggsave(file="/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/plots/spearman_matrix_plot_for_filtered_dataset.png", g)
 ```
 
 ```{r remove columns with high multicollinearity}
@@ -455,9 +455,9 @@ summary(multiple_lm_model_subset_check)
 ```{r save kv_house_data_family_filtered, kv_house_data_family_filtered_after_feature_selection as .rds}
 
 # Save data frames as .rds files for easier future reference
-saveRDS(kv_house_data_family_filtered, "/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/data/kv_house_data_family_filtered.rds")
+saveRDS(kv_house_data_family_filtered, "/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/data/kv_house_data_family_filtered.rds")
 
-saveRDS(kv_house_data_family_filtered_after_feature_selection, "/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/data/kv_house_data_family_filtered_after_feature_selection.rds")
+saveRDS(kv_house_data_family_filtered_after_feature_selection, "/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/data/kv_house_data_family_filtered_after_feature_selection.rds")
 
 ```
 
@@ -641,7 +641,7 @@ crossValidate = function(Kfold, iperm, datafr, nMLR) {
 
 ```{r import the cleaned and transformed dataset from saved .rds files}
 
-kv_house_data_family_filtered_for_CV = readRDS("/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/data/kv_house_data_family_filtered.rds")
+kv_house_data_family_filtered_for_CV = readRDS("/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/data/kv_house_data_family_filtered.rds")
 
 ```
 
@@ -657,13 +657,13 @@ iperm = sample(n)
 modelCVOutput = crossValidate(Kfold=3, iperm, kv_house_data_family_filtered_for_CV, nMLR=2)
 modelCVOutput
 
-saveRDS(modelCVOutput, "/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/outputs/model_cross_validation_output.rds")
+saveRDS(modelCVOutput, "/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/outputs/model_cross_validation_output.rds")
 
 ```
 
 ```{r import model performance outputs from model_cross_validation_output.rds saved in order to generate the performance tables in the following sections}
 
-performanceOutput = readRDS("/Users/yujiech/Documents/GitHub/House Price Prediction for King County in USA/outputs/model_cross_validation_output.rds")
+performanceOutput = readRDS("/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/outputs/model_cross_validation_output.rds")
 
 ```
 
@@ -723,6 +723,10 @@ performance_tables_per_fold = list(performanceOutputMLR_0.5_per_fold=performance
 
 performance_tables_per_fold
 
+```
+
+``` {r Covert and save this R markdown file as an R script}
+knitr::purl("/Users/yujiech/Documents/GitHub/House-Price-Prediction-for-King-County-in-USA/code/House Price Prediction for King County in USA.rmd")
 ```
 
 
